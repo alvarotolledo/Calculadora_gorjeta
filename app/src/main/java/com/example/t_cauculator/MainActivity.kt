@@ -107,7 +107,15 @@ class MainActivity : AppCompatActivity() {
                 val tips = totaltemp * percentage / 100
                 val totalwh = totaltemp + tips
 
-                binding.tvResult.text = "total tips : $totalwh"
+                intent = Intent(this, MainActivity2::class.java)
+                intent.apply {
+                    putExtra("total_persona", npleople)
+                    putExtra("valor_conta", total)
+                    putExtra("porcentage", percentage)
+                    putExtra("valor_total", totalwh)
+                }
+                startActivity(intent)
+                clean()
 
             }
 
@@ -116,20 +124,19 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnLimpar.setOnClickListener {
 
-            binding.tvResult.text = ""
-            binding.valorTotal.setText("")
-            binding.spinner.isSelected = false
-            binding.optionOn.isChecked = false
-            binding.optionTrue.isChecked = false
-            binding.optionTri.isChecked = false
-
-
-            intent = Intent(this, MainActivity2::class.java)
-            startActivity(intent)
+            clean()
 
         }
 
 
+    }
+
+    private fun clean(){
+        binding.valorTotal.setText("")
+        binding.spinner.isSelected = false
+        binding.optionOn.isChecked = false
+        binding.optionTrue.isChecked = false
+        binding.optionTri.isChecked = false
     }
 }
 
