@@ -17,14 +17,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var percentage = 0
-        var numpeopleselect = 0
+
 
         binding.btnCalcular.setOnClickListener {
 
             val totate = binding.valorTotal.text
+            val npleople = binding.numeropesoas.text
+            val porcen =binding.porcentaaa.text
 
-            if (totate?.isEmpty() == true) {
+            if (totate?.isEmpty() == true || npleople?.isEmpty() == true || porcen?.isEmpty() == true ) {
 
                 Snackbar.make(
                     binding.valorTotal, "Por gentileza, Preencha todos os campos",
@@ -33,18 +34,19 @@ class MainActivity : AppCompatActivity() {
                     .show()
 
             } else {
-                val npleople: Int = numpeopleselect
+                val npleople: Int = npleople.toString().toInt()
                 val total: Float = totate.toString().toFloat()
+                val pertenge : Int = porcen.toString().toInt()
 
                 val totaltemp = total / npleople
-                val tips = totaltemp * percentage / 100
+                val tips = totaltemp * pertenge / 100
                 val totalwh = totaltemp + tips
 
                 intent = Intent(this, MainActivity2::class.java)
                 intent.apply {
                     putExtra("total_persona", npleople)
                     putExtra("valor_conta", total)
-                    putExtra("porcentage", percentage)
+                    putExtra("porcentage", pertenge)
                     putExtra("valor_total", totalwh)
                 }
                 clean()
@@ -66,7 +68,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clean(){
-
+        binding.porcentaaa.setText("")
+        binding.numeropesoas.setText("")
         binding.valorTotal.setText("")
 
     }
