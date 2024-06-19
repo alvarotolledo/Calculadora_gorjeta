@@ -8,6 +8,16 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/hint_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Digite o valor da conta"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
         android:id="@+id/tv_tipr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,8 +32,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="385dp"
-        android:layout_height="57dp"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
         android:layout_margin="16dp"
         android:text="Preencha os campos vazios abaixo para realizar seu calculo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,33 +42,26 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tli_total"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:hint="Digite o valor total da Conta"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/hint_tv"
+        app:layout_constraintTop_toBottomOf="@+id/hint_tv">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/valor_total"
-            android:maxLength="6"
-            android:inputType="numberDecimal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="R$ 250.00"
+            android:inputType="numberDecimal"
+            android:maxLength="6"
+            android:paddingStart="0dp"
+            android:textSize="24sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tli_total"/>
-
-
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -69,73 +72,89 @@
         app:layout_constraintGuide_begin="206dp" />
 
 
-    <RadioGroup
-        android:id="@+id/rdgp"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner">
-
-        <RadioButton
-            android:id="@+id/option_on"
-            android:text="10%"
-            android:layout_margin="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <RadioButton
-            android:id="@+id/option_true"
-            android:text="15%"
-            android:layout_margin="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <RadioButton
-            android:id="@+id/option_tri"
-            android:text="20%"
-            android:layout_margin="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </RadioGroup>
-
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_limpar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="171dp"
+        android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="16dp"
         android:text="Limpar"
-        app:layout_constraintStart_toStartOf="@id/center_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/rdgp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/center_vertical" />
 
     <Button
         android:id="@+id/btn_calcular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="172dp"
+        android:layout_height="43dp"
         android:layout_marginEnd="16dp"
+        android:layout_margin="16dp"
         android:text="Caucular"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/center_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/rdgp" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tv_result"
-        android:layout_width="337dp"
-        android:layout_height="170dp"
-        android:maxLength="15"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_calcular"
-        tools:text="40" />
+        android:id="@+id/textView2"
+        android:layout_width="137dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="12dp"
+        android:text="Numero de Pessoas:"
+        app:layout_constraintStart_toStartOf="@+id/tli_total"
+        app:layout_constraintTop_toBottomOf="@+id/tli_total" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintEnabled="false"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:paddingStart="0dp"
+            android:layout_marginTop="16dp"
+            android:hint="EX:4"
+            android:textSize="24sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/txtsas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Porcentagem"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintEnabled="false"
+        app:layout_constraintStart_toStartOf="@+id/txtsas"
+        app:layout_constraintTop_toBottomOf="@+id/txtsas">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:paddingStart="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="EX: 10"
+            android:textSize="24sp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

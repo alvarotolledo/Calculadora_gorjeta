@@ -2,9 +2,7 @@ package com.example.t_cauculator
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+
 
 import androidx.appcompat.app.AppCompatActivity
 
@@ -21,71 +19,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         var percentage = 0
         var numpeopleselect = 0
-
-
-        val adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.num_people,
-            android.R.layout.simple_spinner_item
-
-        )
-
-        binding.spinner.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    numpeopleselect = position
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                }
-
-            }
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
-        binding.spinner.adapter = adapter
-
-
-
-
-
-
-
-        binding.optionOn.setOnCheckedChangeListener { _, isChecked ->
-
-            if (isChecked) {
-                percentage = 10
-            }
-
-        }
-
-        binding.optionTrue.setOnCheckedChangeListener { _, isChecked ->
-
-            if (isChecked) {
-                percentage = 15
-            }
-
-        }
-
-        binding.optionTri.setOnCheckedChangeListener { _, isChecked ->
-
-            if (isChecked) {
-                percentage = 20
-            }
-        }
-
-
-
-
-
-
-
-
 
         binding.btnCalcular.setOnClickListener {
 
@@ -114,8 +47,9 @@ class MainActivity : AppCompatActivity() {
                     putExtra("porcentage", percentage)
                     putExtra("valor_total", totalwh)
                 }
-                startActivity(intent)
                 clean()
+                startActivity(intent)
+
 
             }
 
@@ -132,11 +66,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clean(){
+
         binding.valorTotal.setText("")
-        binding.spinner.isSelected = false
-        binding.optionOn.isChecked = false
-        binding.optionTrue.isChecked = false
-        binding.optionTri.isChecked = false
+
     }
 }
 
