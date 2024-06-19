@@ -24,7 +24,7 @@ class MainActivity2 : AppCompatActivity() {
 
         binding.tvValorConta.text = valor_conta.toString()
         binding.tvNumeropessoas.text = total_pessoas.toString()
-        binding.tvPorcentagem.text = Porcentagem.toString()
+        binding.tvPorcentagem.text = Porcentagem.toString() +  "%"
         binding.tvTotal.text = valor_total.toString()
 
 
